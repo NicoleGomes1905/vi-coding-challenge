@@ -1,24 +1,45 @@
 :root {
-  color-scheme: light dark;
-  background-color: #ffffff;
+  color-scheme: light;
+  --page-background: #ffffff;
+  --surface-background: #ffffff;
+  --surface-border: #dddddd;
+  --text-color: #1f2933;
+  --muted-text-color: #7a8491;
+  --focus-ring-color: #6890f0;
+  background: var(--page-background);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    background-color: #16171d;
-  }
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --page-background: #16171d;
+  --surface-background: #20222b;
+  --surface-border: #3a3d49;
+  --text-color: #f4f6f8;
+  --muted-text-color: #a5adba;
+  --focus-ring-color: #98d8d8;
 }
 
 body {
   margin: 0;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
   min-width: 320px;
   min-height: 100svh;
+  background: var(--page-background);
+  color: var(--text-color);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  transition:
+    background-color 180ms ease,
+    color 180ms ease;
+}
+
+#storybook-root,
+.sb-show-main {
+  min-height: 100svh;
+  background: var(--page-background);
 }
